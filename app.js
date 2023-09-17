@@ -21,7 +21,7 @@ const view = () => {
 const search = () => {
     rl.question('Name to search : ', (name) => {
         const searchedContact = contacts.find((contact) => contact.name === name);
-        searchedContact ? console.log(`Contact => Name: ${searchedContact.name}, Phone: ${searchedContact.number}`)
+        searchedContact ? console.log(`Contact - Name: ${searchedContact.name}, Phone: ${searchedContact.number}`)
         : console.log("Contact doesn't exist !");
         rl.prompt();
     });
@@ -29,12 +29,17 @@ const search = () => {
 
 const exit = () => rl.close();
 
-rl.setPrompt('Choose a function => add - view - search - exit : ');
+rl.setPrompt(`Choose an option :
+1 - add 
+2 - view
+3 - search
+4 - exit 
+=> `);
 rl.prompt();
 
 rl.on('line', (input) => {
-    const choice = input.toLowerCase();
-    switch (choice) {
+    const option = input.toLowerCase();
+    switch (option) {
         case 'add':
             add();
             break;
@@ -48,7 +53,7 @@ rl.on('line', (input) => {
             exit()
           break;
         default:
-            console.log('Invalid choice !');
+            console.log('Invalid option !');
             rl.prompt();
       }
       
