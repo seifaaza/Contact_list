@@ -13,28 +13,28 @@ const add = () => {
     });
 }
 const view = () => {
-    contacts.length == 0 ? console.log('No contacts to display.\n')
+    contacts.length == 0 ? console.log('Contact list is empty ')
     : contacts.forEach((contact) => console.log(`Name: ${contact.name}, Phone: ${contact.number}`));
     rl.prompt();
 }
 
 const search = () => {
-    rl.question('Name to search: ', (name) => {
+    rl.question('Name to search : ', (name) => {
         const searchedContact = contacts.find((contact) => contact.name === name);
-        searchedContact ? console.log(`Contact exist - Name: ${searchedContact.name}, Phone: ${searchedContact.number}`)
-        : console.log('Contact does not exist !');
+        searchedContact ? console.log(`Contact => Name: ${searchedContact.name}, Phone: ${searchedContact.number}`)
+        : console.log("Contact doesn't exist !");
         rl.prompt();
     });
 }
 
 const exit = () => rl.close();
 
-rl.setPrompt('Choose a function : add - view - search - exit => ');
+rl.setPrompt('Choose a function => add - view - search - exit : ');
 rl.prompt();
 
 rl.on('line', (input) => {
-    const command = input.trim().toLowerCase();
-    switch (command) {
+    const choice = input.toLowerCase();
+    switch (choice) {
         case 'add':
             add();
             break;
